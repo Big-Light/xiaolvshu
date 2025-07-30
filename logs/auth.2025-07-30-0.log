@@ -1,0 +1,12 @@
+2025-07-30 15:28:29.597 [main] INFO  com.xcf.xls.auth.XlsAuthApplication - Starting XlsAuthApplication using Java 17.0.12 with PID 26784 (C:\Users\jack.xu\Desktop\code\xiaolvshu\xls-auth\target\classes started by jack.xu in C:\Users\jack.xu\Desktop\code\xiaolvshu)
+2025-07-30 15:28:29.600 [main] INFO  com.xcf.xls.auth.XlsAuthApplication - The following 1 profile is active: "dev"
+2025-07-30 15:28:30.583 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.xcf.xls.auth.domain.mapper]' package. Please check your configuration.
+2025-07-30 15:28:31.270 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8080 (http)
+2025-07-30 15:28:31.286 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2025-07-30 15:28:31.286 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.5]
+2025-07-30 15:28:31.405 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-07-30 15:28:31.405 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1731 ms
+2025-07-30 15:28:31.858 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2025-07-30 15:28:36.845 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2025-07-30 15:28:37.170 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8080 (http) with context path ''
+2025-07-30 15:28:37.181 [main] INFO  com.xcf.xls.auth.XlsAuthApplication - Started XlsAuthApplication in 8.519 seconds (process running for 10.169)
