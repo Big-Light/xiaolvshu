@@ -1,0 +1,8 @@
+2025-07-30 15:40:31.346 [main] INFO  com.xcf.xls.auth.XlsAuthApplicationTests - Starting XlsAuthApplicationTests using Java 17.0.12 with PID 45976 (started by jack.xu in C:\Users\jack.xu\Desktop\code\xiaolvshu\xls-auth)
+2025-07-30 15:40:31.348 [main] INFO  com.xcf.xls.auth.XlsAuthApplicationTests - The following 1 profile is active: "dev"
+2025-07-30 15:40:32.212 [main] WARN  org.mybatis.spring.mapper.ClassPathMapperScanner - No MyBatis mapper was found in '[com.xcf.xls.auth.domain.mapper]' package. Please check your configuration.
+2025-07-30 15:40:33.314 [main] INFO  c.a.d.s.b.a.DruidDataSourceAutoConfigure - Init DruidDataSource
+2025-07-30 15:40:35.608 [main] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} inited
+2025-07-30 15:40:35.819 [main] INFO  com.xcf.xls.auth.XlsAuthApplicationTests - Started XlsAuthApplicationTests in 5.022 seconds (process running for 6.157)
+2025-07-30 15:40:36.512 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2025-07-30 15:40:36.523 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
