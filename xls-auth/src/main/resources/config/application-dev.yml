@@ -2,9 +2,9 @@ spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver # 指定数据库驱动类
     # 数据库连接信息
-    url: jdbc:mysql://7e80687ad616437b92cef965233b799bin01.internal.ap-southeast-1.mysql.rds.myhuaweicloud.com:3306/at3_delivery_db?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
-    username: at3_dr_test_02 # 数据库用户名
-    password: 3P87n6XiUI2x # 数据库密码
+    url: jdbc:mysql://192.168.200.100:3306/xls
+    username: root # 数据库用户名
+    password: 123 # 数据库密码
     type: com.alibaba.druid.pool.DruidDataSource
     druid: # Druid 连接池
       initial-size: 5 # 初始化连接池大小

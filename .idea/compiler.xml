@@ -9,9 +9,10 @@
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar" />
         </processorPath>
+        <module name="xls-spring-boot-starter-biz-operationlog" />
+        <module name="xls-common" />
         <module name="springboot-start-biz-operationlog" />
         <module name="xls-auth" />
-        <module name="xls-common" />
       </profile>
     </annotationProcessing>
   </component>
