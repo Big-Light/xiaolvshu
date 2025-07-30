@@ -1,0 +1,4 @@
+com\xcf\xls\auth\controller\TestController.class
+com\xcf\xls\auth\XlsAuthApplication.class
+com\xcf\xls\auth\controller\User$UserBuilder.class
+com\xcf\xls\auth\controller\User.class
