@@ -27,10 +27,8 @@ public class TestController {
     @GetMapping("/test2")
     @ApiOperationLog(description = "测试接口2")
     public Response<User> test2() {
-        return Response.success(User.builder()
-                .nickName("犬小哈")
-                .createTime(LocalDateTime.now())
-                .build());
+        int i = 1 / 0;
+        return Response.success();
     }
 }
 
