@@ -25,22 +25,27 @@
     from t_permission
     where id = #{id,jdbcType=BIGINT}
   </select>
+  <select id="selectAppEnabledList" resultMap="BaseResultMap">
+    select id, name, permission_key from t_permission
+    where status = 0 and type = 3 and is_deleted = 0
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from t_permission
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.xcf.xls.auth.domain.DO.PermissionDO">
-    insert into t_permission (id, parent_id, `name`, 
-      `type`, menu_url, menu_icon, 
-      sort, permission_key, `status`, 
-      create_time, update_time, is_deleted
-      )
-    values (#{id,jdbcType=BIGINT}, #{parentId,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
-      #{type,jdbcType=TINYINT}, #{menuUrl,jdbcType=VARCHAR}, #{menuIcon,jdbcType=VARCHAR}, 
-      #{sort,jdbcType=INTEGER}, #{permissionKey,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT}
-      )
+  <insert id="insert" parameterType="com.xcf.xls.auth.domain.DO.UserDO" useGeneratedKeys="true" keyProperty="id">
+    insert into t_user (xiaohashu_id, `password`,
+                        nickname, avatar, birthday,
+                        background_img, phone, sex,
+                        `status`, introduction, create_time,
+                        update_time, is_deleted)
+    values (#{xiaohashuId,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},
+            #{nickname,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, #{birthday,jdbcType=DATE},
+            #{backgroundImg,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{sex,jdbcType=TINYINT},
+            #{status,jdbcType=TINYINT}, #{introduction,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP},
+            #{updateTime,jdbcType=TIMESTAMP}, #{isDeleted,jdbcType=BIT})
   </insert>
+
   <insert id="insertSelective" parameterType="com.xcf.xls.auth.domain.DO.PermissionDO">
     insert into t_permission
     <trim prefix="(" suffix=")" suffixOverrides=",">

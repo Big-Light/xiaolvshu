@@ -147,3 +147,5 @@ java.lang.ArithmeticException: / by zero
 2025-07-30 17:49:08.007 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2025-07-30 17:49:08.008 [http-nio-8080-exec-2] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
 2025-07-30 17:49:08.221 [http-nio-8080-exec-2] WARN  com.xcf.xls.auth.exception.GlobalExceptionHandler - /verification/code/send request error, errorCode: AUTH-10001, errorMessage: phone 手机号格式不正确, 需为 11 位数字, 当前值: '1855513223'; 
+2025-07-30 17:58:39.406 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closing ...
+2025-07-30 17:58:39.413 [SpringApplicationShutdownHook] INFO  com.alibaba.druid.pool.DruidDataSource - {dataSource-1} closed
