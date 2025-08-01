@@ -20,7 +20,9 @@
 
     <modules>
         <module>xls-common</module>
-        <module>springboot-start-biz-operationlog</module>
+        <module>xls-springboot-start-biz-operationlog</module>
+        <module>xls-springboot-start-biz-context</module>
+        <module>xls-spring-boot-starter-jackson</module>
     </modules>
 
 </project>

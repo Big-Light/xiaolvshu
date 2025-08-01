@@ -1,4 +1,4 @@
-package com.xcf.xls.auth.filter;
+package com.xcf.xls.framework.biz.context.holder;
 
 
 
@@ -10,9 +10,6 @@ import java.util.Map;
 import java.util.Objects;
 
 /**
- * @author: 犬小哈
- * @date: 2024/4/9 18:19
- * @version: v1.0.0
  * @description: 登录用户上下文
  **/
 public class LoginUserContextHolder {
@@ -20,7 +17,6 @@ public class LoginUserContextHolder {
     // 初始化一个 ThreadLocal 变量
     private static final ThreadLocal<Map<String, Object>> LOGIN_USER_CONTEXT_THREAD_LOCAL
             = TransmittableThreadLocal.withInitial(HashMap::new);
-
 
     /**
      * 设置用户 ID

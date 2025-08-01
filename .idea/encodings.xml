@@ -5,13 +5,23 @@
     <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xls-auth/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xls-auth/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/xls-framework/springboot-start-biz-operationlog/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/xls-framework/springboot-start-biz-operationlog/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xls-framework/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xls-framework/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xls-framework/xls-common/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xls-framework/xls-common/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-framework/xls-spring-boot-starter-jackson/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-framework/xls-spring-boot-starter-jackson/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-framework/xls-springboot-start-biz-context/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-framework/xls-springboot-start-biz-context/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-framework/xls-springboot-start-biz-operationlog/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-framework/xls-springboot-start-biz-operationlog/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xls-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/xls-gateway/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-user/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-user/xls-user-api/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-user/xls-user-api/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-user/xls-user-biz/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/xls-user/xls-user-biz/src/main/resources" charset="UTF-8" />
   </component>
 </project>

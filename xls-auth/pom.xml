@@ -131,6 +131,11 @@
             <artifactId>spring-security-crypto</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.xcf</groupId>
+            <artifactId>xls-springboot-start-biz-context</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

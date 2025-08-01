@@ -15,7 +15,6 @@ import com.xcf.xls.auth.domain.DO.UserDO;
 import com.xcf.xls.auth.domain.DO.UserRoleDO;
 import com.xcf.xls.auth.enums.LoginTypeEnum;
 import com.xcf.xls.auth.enums.ResponseCodeEnum;
-import com.xcf.xls.auth.filter.LoginUserContextHolder;
 import com.xcf.xls.auth.mapper.UserDOMapper;
 import com.xcf.xls.auth.mapper.UserRoleDOMapper;
 import com.xcf.xls.auth.model.vo.user.UpdatePasswordReqVO;

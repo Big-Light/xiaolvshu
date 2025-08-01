@@ -22,6 +22,8 @@
         <module>xls-auth</module>
         <module>xls-framework</module>
         <module>xls-gateway</module>
+        <module>xls-user</module>
+        <module>xls-user/xls-user-api</module>
     </modules>
 
     <properties>
@@ -125,6 +127,20 @@
             <dependency>
                 <groupId>com.xcf</groupId>
                 <artifactId>xls-spring-boot-starter-biz-operationlog</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <!-- 上下文组件 -->
+            <dependency>
+                <groupId>com.xcf</groupId>
+                <artifactId>xls-springboot-start-biz-context</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
+            <!-- Jackson 组件 -->
+            <dependency>
+                <groupId>com.xcf</groupId>
+                <artifactId>xls-spring-boot-starter-jackson</artifactId>
                 <version>${revision}</version>
             </dependency>
 
