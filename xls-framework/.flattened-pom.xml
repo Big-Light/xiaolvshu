@@ -15,6 +15,8 @@
   <description>平台基础设施层：封装一些常用功能，供各个业务线拿来即用</description>
   <modules>
     <module>xls-common</module>
-    <module>springboot-start-biz-operationlog</module>
+    <module>xls-springboot-start-biz-operationlog</module>
+    <module>xls-springboot-start-biz-context</module>
+    <module>xls-spring-boot-starter-jackson</module>
   </modules>
 </project>

@@ -70,7 +70,7 @@
         <!-- 上下文组件 -->
         <dependency>
             <groupId>com.xcf</groupId>
-            <artifactId>xls-springboot-start-biz-context</artifactId>
+            <artifactId>xls-spring-boot-starter-biz-context</artifactId>
         </dependency>
 
         <!-- Jackson 组件 -->

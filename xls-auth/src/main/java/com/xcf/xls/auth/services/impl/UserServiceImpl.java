@@ -2,7 +2,6 @@ package com.xcf.xls.auth.services.impl;
 
 import cn.dev33.satoken.stp.SaTokenInfo;
 import cn.dev33.satoken.stp.StpUtil;
-import com.google.common.base.Preconditions;
 import com.google.common.collect.Lists;
 import com.xcf.enums.DeletedEnum;
 import com.xcf.enums.StatusEnum;
@@ -20,6 +19,7 @@ import com.xcf.xls.auth.mapper.UserRoleDOMapper;
 import com.xcf.xls.auth.model.vo.user.UpdatePasswordReqVO;
 import com.xcf.xls.auth.model.vo.user.UserLoginReqVO;
 import com.xcf.xls.auth.services.UserService;
+import com.xcf.xls.framework.biz.context.holder.LoginUserContextHolder;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;

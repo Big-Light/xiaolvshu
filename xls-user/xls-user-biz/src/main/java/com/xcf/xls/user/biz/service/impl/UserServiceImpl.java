@@ -5,8 +5,10 @@ import com.alibaba.nacos.shaded.com.google.common.base.Preconditions;
 import com.xcf.response.Response;
 import com.xcf.util.ParamUtils;
 import com.xcf.xls.framework.biz.context.holder.LoginUserContextHolder;
+import com.xcf.xls.user.biz.domain.DO.UserDO;
 import com.xcf.xls.user.biz.enums.ResponseCodeEnum;
 import com.xcf.xls.user.biz.enums.SexEnum;
+import com.xcf.xls.user.biz.mapper.UserDOMapper;
 import com.xcf.xls.user.biz.model.VO.UpdateUserInfoReqVO;
 import com.xcf.xls.user.biz.service.UserService;
 import jakarta.annotation.Resource;
@@ -64,7 +66,7 @@ public class UserServiceImpl implements UserService {
         String xiaohashuId = updateUserInfoReqVO.getXiaohashuId();
         if (StringUtils.isNotBlank(xiaohashuId)) {
             Preconditions.checkArgument(ParamUtils.checkXiaohashuId(xiaohashuId), ResponseCodeEnum.XIAOHASHU_ID_VALID_FAIL.getErrorMessage());
-            userDO.setXiaohashuId(xiaohashuId);
+            userDO.setXlsId(xiaohashuId);
             needUpdate = true;
         }
 

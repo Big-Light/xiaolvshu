@@ -24,6 +24,7 @@
         <module>xls-gateway</module>
         <module>xls-user</module>
         <module>xls-user/xls-user-api</module>
+        <module>xls-note</module>
     </modules>
 
     <properties>
@@ -133,7 +134,7 @@
             <!-- 上下文组件 -->
             <dependency>
                 <groupId>com.xcf</groupId>
-                <artifactId>xls-springboot-start-biz-context</artifactId>
+                <artifactId>xls-spring-boot-starter-biz-context</artifactId>
                 <version>${revision}</version>
             </dependency>
 

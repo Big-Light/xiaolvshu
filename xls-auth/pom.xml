@@ -133,7 +133,7 @@
 
         <dependency>
             <groupId>com.xcf</groupId>
-            <artifactId>xls-springboot-start-biz-context</artifactId>
+            <artifactId>xls-spring-boot-starter-biz-context</artifactId>
         </dependency>
 
     </dependencies>

@@ -1,5 +1,11 @@
+com\xcf\enums\StatusEnum.class
 com\xcf\exception\BizException.class
 com\xcf\response\Response.class
+com\xcf\enums\DeletedEnum.class
+com\xcf\validator\PhoneNumber.class
+com\xcf\util\ParamUtils.class
 com\xcf\constant\DateConstants.class
 com\xcf\exception\BaseExceptionInterface.class
+com\xcf\validator\PhoneNumberValidator.class
+com\xcf\constant\GlobalConstants.class
 com\xcf\util\JsonUtils.class

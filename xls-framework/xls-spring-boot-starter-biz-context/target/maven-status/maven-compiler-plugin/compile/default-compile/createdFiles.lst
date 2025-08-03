@@ -1,0 +1,5 @@
+com\xcf\xls\framework\biz\context\config\ContextAutoConfiguration.class
+com\xcf\xls\framework\biz\context\config\FeignContextAutoConfiguration.class
+com\xcf\xls\framework\biz\context\interceptor\FeignRequestInterceptor.class
+com\xcf\xls\framework\biz\context\holder\LoginUserContextHolder.class
+com\xcf\xls\framework\biz\context\filter\HeaderUserId2ContextFilter.class

@@ -1,0 +1,2 @@
+com.xcf.xls.framework.biz.context.config.ContextAutoConfiguration
+com.xcf.xls.framework.biz.context.config.FeignContextAutoConfiguration
