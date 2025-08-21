@@ -65,6 +65,8 @@
 
         <transmittable-thread-local.version>2.14.2</transmittable-thread-local.version>
 
+        <caffeine.version>3.1.8</caffeine.version>
+
     </properties>
 
     <!-- 统一依赖管理 -->
@@ -224,6 +226,12 @@
                 <version>${revision}</version>
             </dependency>
 
+            <!-- Caffeine 本地缓存 -->
+            <dependency>
+                <groupId>com.github.ben-manes.caffeine</groupId>
+                <artifactId>caffeine</artifactId>
+                <version>${caffeine.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
