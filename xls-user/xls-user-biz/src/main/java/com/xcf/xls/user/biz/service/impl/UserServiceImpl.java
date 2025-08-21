@@ -1,5 +1,6 @@
 package com.xcf.xls.user.biz.service.impl;
 
+import cn.hutool.core.util.RandomUtil;
 import com.alibaba.cloud.commons.lang.StringUtils;
 import com.alibaba.nacos.shaded.com.google.common.base.Preconditions;
 import com.xcf.enums.DeletedEnum;
@@ -26,6 +27,7 @@ import com.xcf.xls.user.biz.service.UserService;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -36,6 +38,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author: 犬小哈
@@ -55,6 +58,8 @@ public class UserServiceImpl implements UserService {
     private RoleDOMapper roleDOMapper;
     @Resource
     private RedisTemplate<String, Object> redisTemplate;
+    @Resource(name = "taskExecutor")
+    private ThreadPoolTaskExecutor threadPoolTaskExecutor;
 
     /**
      * 更新用户信息
@@ -137,23 +142,51 @@ public class UserServiceImpl implements UserService {
      */
     @Override
     public Response<FindUserByIdRspDTO> findById(FindUserByIdReqDTO findUserByIdReqDTO) {
-        //1.获取id
-        Long id = findUserByIdReqDTO.getId();
+        Long userId = findUserByIdReqDTO.getId();
 
-        //2.查到用户
-        UserDO userDO = userDOMapper.selectByPrimaryKey(id);
+        // 用户缓存 Redis Key
+        String userInfoRedisKey = RedisKeyConstants.buildUserInfoKey(userId);
 
-        //2.1 判空
-        if(Objects.isNull(userDO)){
+        // 先从 Redis 缓存中查询
+        String userInfoRedisValue = (String) redisTemplate.opsForValue().get(userInfoRedisKey);
+
+        // 若 Redis 缓存中存在该用户信息
+        if (StringUtils.isNotBlank(userInfoRedisValue)) {
+            // 将存储的 Json 字符串转换成对象，并返回
+            FindUserByIdRspDTO findUserByIdRspDTO = JsonUtils.parseObject(userInfoRedisValue, FindUserByIdRspDTO.class);
+            return Response.success(findUserByIdRspDTO);
+        }
+
+        // 否则, 从数据库中查询
+        // 根据用户 ID 查询用户信息
+        UserDO userDO = userDOMapper.selectByPrimaryKey(userId);
+
+        // 判空
+        if (Objects.isNull(userDO)) {
+            threadPoolTaskExecutor.execute(() -> {
+                // 防止缓存穿透，将空数据存入 Redis 缓存 (过期时间不宜设置过长)
+                // 保底1分钟 + 随机秒数
+                long expireSeconds = 60 + RandomUtil.randomInt(60);
+                redisTemplate.opsForValue().set(userInfoRedisKey, "null", expireSeconds, TimeUnit.SECONDS);
+            });
             throw new BizException(ResponseCodeEnum.USER_NOT_FOUND);
         }
 
-        //3.构造返回对象
+        // 构建返参
         FindUserByIdRspDTO findUserByIdRspDTO = FindUserByIdRspDTO.builder()
                 .id(userDO.getId())
-                .avatar(userDO.getAvatar())
                 .nickName(userDO.getNickname())
+                .avatar(userDO.getAvatar())
                 .build();
+
+        // 异步将用户信息存入 Redis 缓存，提升响应速度
+        threadPoolTaskExecutor.submit(() -> {
+            // 过期时间（保底1天 + 随机秒数，将缓存过期时间打散，防止同一时间大量缓存失效，导致数据库压力太大）
+            long expireSeconds = 60*60*24 + RandomUtil.randomInt(60*60*24);
+            redisTemplate.opsForValue()
+                    .set(userInfoRedisKey, JsonUtils.toJsonString(findUserByIdRspDTO), expireSeconds, TimeUnit.SECONDS);
+        });
+
         return Response.success(findUserByIdRspDTO);
     }
 
