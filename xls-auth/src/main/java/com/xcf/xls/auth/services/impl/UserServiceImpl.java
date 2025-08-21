@@ -18,11 +18,13 @@ import com.xcf.xls.auth.mapper.UserDOMapper;
 import com.xcf.xls.auth.mapper.UserRoleDOMapper;
 import com.xcf.xls.auth.model.vo.user.UpdatePasswordReqVO;
 import com.xcf.xls.auth.model.vo.user.UserLoginReqVO;
+import com.xcf.xls.auth.rpc.UserRpcService;
 import com.xcf.xls.auth.services.UserService;
 import com.xcf.xls.framework.biz.context.holder.LoginUserContextHolder;
 import jakarta.annotation.Resource;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -45,6 +47,8 @@ public class UserServiceImpl implements UserService {
     private RedisTemplate<String, Object> redisTemplate;
     @Resource
     private PasswordEncoder passwordEncoder;
+    @Autowired
+    private UserRpcService userRpcService;
 
     /**
      * 登录与注册
@@ -81,20 +85,14 @@ public class UserServiceImpl implements UserService {
                     throw new BizException(ResponseCodeEnum.VERIFICATION_CODE_ERROR);
                 }
 
-                // 通过手机号查询记录
-                UserDO userDO = userDOMapper.selectByPhone(phone);
+                //RPC: 调用用户服务，注册用户
+                Long userIdTmp = userRpcService.registerUser(phone);
 
-                log.info("==> 用户是否注册, phone: {}, userDO: {}", phone, JsonUtils.toJsonString(userDO));
-
-                // 判断是否注册
-                if (Objects.isNull(userDO)) {
-                    // 若此用户还没有注册，系统自动注册该用户
-                    userId = registerUser(phone);
-
-                } else {
-                    // 已注册，则获取其用户 ID
-                    userId = userDO.getId();
+                // 若调用用户服务，返回的用户ID为空，则提示登录失败
+                if(Objects.isNull(userIdTmp)){
+                    throw new BizException(ResponseCodeEnum.LOGIN_FAIL);
                 }
+                userId = userIdTmp;
                 break;
             case PASSWORD: // 密码登录
                 String password = userLoginReqVO.getPassword();
@@ -216,7 +214,7 @@ public class UserServiceImpl implements UserService {
         // 将该用户的角色 ID 存入 Redis 中
         List<Long> roles = Lists.newArrayList();
         roles.add(RoleConstants.COMMON_USER_ROLE_ID);
-        String userRolesKey = RedisKeyConstants.buildUserRoleKey(phone);
+        String userRolesKey = RedisKeyConstants.buildUserRoleKey(Long.valueOf(phone));
         redisTemplate.opsForValue().set(userRolesKey, JsonUtils.toJsonString(roles));
 
         return userId;

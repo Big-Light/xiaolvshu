@@ -21,7 +21,7 @@ public enum ResponseCodeEnum implements BaseExceptionInterface {
     XIAOHASHU_ID_VALID_FAIL("USER-20002", "小哈书号请设置6-15个字符，仅可使用英文（必须）、数字、下划线"),
     SEX_VALID_FAIL("USER-20003", "性别错误"),
     INTRODUCTION_VALID_FAIL("USER-20004", "个人简介请设置1-100个字符"),
-    ;
+    USER_NOT_FOUND("USER-20005", "用户没有查到");
     ;
 
     // 异常码

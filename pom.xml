@@ -217,6 +217,13 @@
                 <artifactId>transmittable-thread-local</artifactId>
                 <version>${transmittable-thread-local.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.xcf</groupId>
+                <artifactId>xls-user-api</artifactId>
+                <version>${revision}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

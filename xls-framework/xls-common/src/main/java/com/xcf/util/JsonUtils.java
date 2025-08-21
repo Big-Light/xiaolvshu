@@ -44,4 +44,21 @@ public class JsonUtils {
         return OBJECT_MAPPER.writeValueAsString(obj);
     }
 
+    /**
+     * 将 JSON 字符串转换为对象
+     *
+     * @param jsonStr
+     * @param clazz
+     * @return
+     * @param <T>
+     */
+    @SneakyThrows
+    public static <T> T parseObject(String jsonStr, Class<T> clazz) {
+        if(jsonStr.isBlank())
+            return null;
+
+        return OBJECT_MAPPER.readValue(jsonStr, clazz);
+    }
+
+
 }

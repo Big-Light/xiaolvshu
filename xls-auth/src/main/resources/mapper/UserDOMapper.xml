@@ -186,7 +186,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.xcf.xls.auth.domain.DO.UserDO">
+  <update id="updateByPrimaryKey" parameterType="com.xcf.xls.user.biz.DO.UserDO">
     update t_user
     set xls_id = #{xlsId,jdbcType=VARCHAR},
       `password` = #{password,jdbcType=VARCHAR},

@@ -10,7 +10,7 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
 
 /**
 
- * @description: RedisTemplate 配置
+ * &#064;description:  RedisTemplate 配置
  **/
 @Configuration
 public class RedisTemplateConfig {

@@ -1,5 +1,6 @@
 package com.xcf.xls.auth.mapper;
 
+
 import com.xcf.xls.auth.domain.DO.UserRoleDO;
 
 public interface UserRoleDOMapper {

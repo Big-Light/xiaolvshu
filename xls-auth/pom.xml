@@ -136,6 +136,12 @@
             <artifactId>xls-spring-boot-starter-biz-context</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.xcf</groupId>
+            <artifactId>xls-user-api</artifactId>
+        </dependency>
+
+
     </dependencies>
 
     <build>

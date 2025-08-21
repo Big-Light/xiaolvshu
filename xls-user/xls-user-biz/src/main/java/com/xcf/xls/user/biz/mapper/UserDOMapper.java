@@ -1,7 +1,10 @@
 package com.xcf.xls.user.biz.mapper;
 
-import com.xcf.xls.user.biz.domain.DO.UserDO;
 
+import com.xcf.xls.user.biz.DO.UserDO;
+import org.apache.ibatis.annotations.Mapper;
+
+@Mapper
 public interface UserDOMapper {
     int deleteByPrimaryKey(Long id);
 
@@ -14,4 +17,11 @@ public interface UserDOMapper {
     int updateByPrimaryKeySelective(UserDO record);
 
     int updateByPrimaryKey(UserDO record);
+
+    /**
+     * 根据手机号查询记录
+     * @param phone
+     * @return
+     */
+    UserDO selectByPhone(String phone);
 }

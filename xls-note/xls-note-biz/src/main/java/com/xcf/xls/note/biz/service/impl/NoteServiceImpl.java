@@ -1,6 +1,7 @@
 package com.xcf.xls.note.biz.service.impl;
 
 
+
 import com.alibaba.cloud.commons.lang.StringUtils;
 import com.alibaba.nacos.shaded.com.google.common.base.Preconditions;
 import com.xcf.exception.BizException;
@@ -26,9 +27,6 @@ import java.util.Objects;
 import java.util.UUID;
 
 /**
- * @author: 犬小哈
- * @date: 2024/4/7 15:41
- * @version: v1.0.0
  * @description: 笔记业务
  **/
 @Service
@@ -41,8 +39,8 @@ public class NoteServiceImpl implements NoteService {
     private TopicDOMapper topicDOMapper;
     @Resource
     private DistributedIdGeneratorRpcService distributedIdGeneratorRpcService;
-    @Resource
-    private KeyValueRpcService keyValueRpcService;
+//    @Resource
+//    private KeyValueRpcService keyValueRpcService;
 
 
     /**
@@ -72,11 +70,11 @@ public class NoteServiceImpl implements NoteService {
             case IMAGE_TEXT: // 图文笔记
                 List<String> imgUriList = publishNoteReqVO.getImgUris();
                 // 校验图片是否为空
-                Preconditions.checkArgument(CollUtil.isNotEmpty(imgUriList), "笔记图片不能为空");
+//                Preconditions.checkArgument(CollUtil.isNotEmpty(imgUriList), "笔记图片不能为空");
                 // 校验图片数量
                 Preconditions.checkArgument(imgUriList.size() <= 8, "笔记图片不能多于 8 张");
                 // 将图片链接拼接，以逗号分隔
-                imgUris = StringUtils.join(imgUriList, ",");
+//                imgUris = StringUtils.join(imgUriList, ",");
 
                 break;
             case VIDEO: // 视频笔记
@@ -89,8 +87,8 @@ public class NoteServiceImpl implements NoteService {
         }
 
         // RPC: 调用分布式 ID 生成服务，生成笔记 ID
-        String snowflakeIdId = distributedIdGeneratorRpcService.getSnowflakeId();
-        // 笔记内容 UUID
+//        String snowflakeIdId = distributedIdGeneratorRpcService.getSnowflakeId();
+                // 笔记内容 UUID
         String contentUuid = null;
 
         // 笔记内容
@@ -103,12 +101,12 @@ public class NoteServiceImpl implements NoteService {
             // 生成笔记内容 UUID
             contentUuid = UUID.randomUUID().toString();
             // RPC: 调用 KV 键值服务，存储短文本
-            boolean isSavedSuccess = keyValueRpcService.saveNoteContent(contentUuid, content);
+//            boolean isSavedSuccess = keyValueRpcService.saveNoteContent(contentUuid, content);
 
             // 若存储失败，抛出业务异常，提示用户发布笔记失败
-            if (!isSavedSuccess) {
-                throw new BizException(ResponseCodeEnum.NOTE_PUBLISH_FAIL);
-            }
+//            if (!isSavedSuccess) {
+//                throw new BizException(ResponseCodeEnum.NOTE_PUBLISH_FAIL);
+//            }
         }
 
         // 话题
@@ -124,21 +122,21 @@ public class NoteServiceImpl implements NoteService {
 
         // 构建笔记 DO 对象
         NoteDO noteDO = NoteDO.builder()
-                .id(Long.valueOf(snowflakeIdId))
+//                .id(Long.valueOf(snowflakeIdId))
                 .isContentEmpty(isContentEmpty)
                 .creatorId(creatorId)
                 .imgUris(imgUris)
                 .title(publishNoteReqVO.getTitle())
                 .topicId(publishNoteReqVO.getTopicId())
                 .topicName(topicName)
-                .type(type)
-                .visible(NoteVisibleEnum.PUBLIC.getCode())
-                .createTime(LocalDateTime.now())
-                .updateTime(LocalDateTime.now())
-                .status(NoteStatusEnum.NORMAL.getCode())
+//                .type(type)
+//                .visible(NoteVisibleEnum.PUBLIC.getCode())
+//                .createTime(LocalDateTime.now())
+//                .updateTime(LocalDateTime.now())
+//                .status(NoteStatusEnum.NORMAL.getCode())
                 .isTop(Boolean.FALSE)
                 .videoUri(videoUri)
-                .contentUuid(contentUuid)
+//                .contentUuid(contentUuid)
                 .build();
 
         try {
@@ -149,7 +147,7 @@ public class NoteServiceImpl implements NoteService {
 
             // RPC: 笔记保存失败，则删除笔记内容
             if (StringUtils.isNotBlank(contentUuid)) {
-                keyValueRpcService.deleteNoteContent(contentUuid);
+//                keyValueRpcService.deleteNoteContent(contentUuid);
             }
         }
 
